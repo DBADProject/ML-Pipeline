@@ -16,4 +16,22 @@ def transformer_fn():
     The transformer's input and output signatures should be compatible with scikit-learn
     transformers.
     """
-    return Pipeline(steps=[])
+    return Pipeline(
+            steps=[(
+                "encoder",
+                ColumnTransformer(
+                    transformers=[
+                        # (
+                        #     "year_encoder",
+                        #     MinMaxScaler(),
+                        #     ["roughYear"]
+                        # ),
+                        (
+                            "ordinal_encoder",
+                            OrdinalEncoder(),
+                            ["continent", "disasterType"]
+                        )
+                    ]
+                )
+            )]
+        )

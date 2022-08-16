@@ -6,9 +6,6 @@ This module defines the following routines used by the 'split' step of the regre
 """
 
 from pandas import DataFrame
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import *
-from sklearn.compose import ColumnTransformer
 
 def process_splits(
     train_df: DataFrame, validation_df: DataFrame, test_df: DataFrame
@@ -24,30 +21,7 @@ def process_splits(
     """
 
     def process(df: DataFrame):
-        p = Pipeline(
-            steps=[(
-                "encoder",
-                ColumnTransformer(
-                    transformers=[
-                        (
-                            "year_encoder",
-                            MinMaxScaler(),
-                            ["roughYear"]
-                        ),
-                        (
-                            "ordinal_encoder",
-                            OrdinalEncoder(),
-                            ["continent", "disasterType"]
-                        )
-                    ]
-                )
-            )]
-        )
-
         df = df[["roughYear", "continent", "disasterType"]]
-        p.fit(df)
-        df = DataFrame(p.transform(df))
-        df.columns = ["roughYear", "continent", "disasterType"]
 
         return df
 
