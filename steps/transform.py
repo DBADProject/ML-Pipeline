@@ -7,7 +7,7 @@ This module defines the following routines used by the 'transform' step of the r
 
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.preprocessing import *
 
 
 def transformer_fn():
@@ -16,29 +16,4 @@ def transformer_fn():
     The transformer's input and output signatures should be compatible with scikit-learn
     transformers.
     """
-    return Pipeline(
-        steps=[
-            (
-                "encoder",
-                ColumnTransformer(
-                    transformers=[
-                        (
-                            "hour_encoder",
-                            OneHotEncoder(categories="auto", sparse=False),
-                            ["pickup_hour"],
-                        ),
-                        (
-                            "day_encoder",
-                            OneHotEncoder(categories="auto", sparse=False),
-                            ["pickup_dow"],
-                        ),
-                        (
-                            "std_scaler",
-                            StandardScaler(),
-                            ["trip_distance", "trip_duration"],
-                        ),
-                    ]
-                ),
-            ),
-        ]
-    )
+    return Pipeline(steps=[])

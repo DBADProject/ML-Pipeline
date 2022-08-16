@@ -37,7 +37,7 @@ data_scoring:
   custom_loader_method: steps.ingest.load_file_as_dataframe
   sql: SELECT * FROM delta.`{{INGEST_SCORING_DATA_LOCATION}}`
 # Specifies the name of the column containing targets / labels for model training and evaluation
-target_col: "fare_amount"
+target_col: "roughYear"
 steps:
   split:
     # Train/validation/test split ratios
