@@ -13,5 +13,7 @@ def estimator_fn():
     estimators.
     """
     from sklearn.linear_model import LinearRegression
+    from sklearnex import patch_sklearn
+    patch_sklearn()
 
     return LinearRegression()

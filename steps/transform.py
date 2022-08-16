@@ -21,11 +21,11 @@ def transformer_fn():
                 "encoder",
                 ColumnTransformer(
                     transformers=[
-                        # (
-                        #     "year_encoder",
-                        #     MinMaxScaler(),
-                        #     ["roughYear"]
-                        # ),
+                        #(
+                        #    "year_encoder",
+                        #    MinMaxScaler(),
+                        #    ["roughYear"]
+                        #),
                         (
                             "ordinal_encoder",
                             OrdinalEncoder(),
